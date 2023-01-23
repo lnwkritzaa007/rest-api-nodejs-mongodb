@@ -5,10 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 const products = require('./routes/products');
+require('dotenv').config()
+const uri = process.env.MONGO_URI
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb+srv://admin:1234@cluster0.dniixbr.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(uri)
         .then(() => console.log('connection successfully!'))
         .catch((err) => console.error(err))
 
